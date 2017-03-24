@@ -1,0 +1,347 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should handle string escaping 1`] = `
+Array [
+  Object {
+    "data": "name = last_name",
+    "filters": Array [
+      Object {
+        "data": "prepend:\\"Hello Mr \\\\\\"\\"",
+        "loc": Object {
+          "end": 50,
+          "filename": undefined,
+          "start": 29,
+        },
+        "type": "filter",
+      },
+      Object {
+        "data": "append:\\"\\\\\\"\\"",
+        "loc": Object {
+          "end": 64,
+          "filename": undefined,
+          "start": 53,
+        },
+        "type": "filter",
+      },
+    ],
+    "loc": Object {
+      "end": 67,
+      "filename": undefined,
+      "start": 0,
+    },
+    "type": "assign",
+  },
+]
+`;
+
+exports[`should handle tag ends and filter splitters in string 1`] = `
+Array [
+  Object {
+    "data": "liquid_greeting = liquid_var",
+    "filters": Array [
+      Object {
+        "data": "prepend:\\"{{ \\"",
+        "loc": Object {
+          "end": 54,
+          "filename": undefined,
+          "start": 41,
+        },
+        "type": "filter",
+      },
+      Object {
+        "data": "append:\\" | capitalize }}\\"",
+        "loc": Object {
+          "end": 82,
+          "filename": undefined,
+          "start": 57,
+        },
+        "type": "filter",
+      },
+    ],
+    "loc": Object {
+      "end": 85,
+      "filename": undefined,
+      "start": 0,
+    },
+    "type": "assign",
+  },
+]
+`;
+
+exports[`should parse a logic tag 1`] = `
+Array [
+  Object {
+    "data": "name = first_name",
+    "filters": Array [
+      Object {
+        "data": "capitalize",
+        "loc": Object {
+          "end": 40,
+          "filename": undefined,
+          "start": 30,
+        },
+        "type": "filter",
+      },
+    ],
+    "loc": Object {
+      "end": 43,
+      "filename": undefined,
+      "start": 0,
+    },
+    "type": "assign",
+  },
+]
+`;
+
+exports[`should parse a plain liquid tag 1`] = `
+Array [
+  Object {
+    "data": "Hello, ",
+    "loc": Object {
+      "end": 7,
+      "filename": undefined,
+      "start": 0,
+    },
+    "type": "html",
+  },
+  Object {
+    "data": "first_name",
+    "loc": Object {
+      "end": 23,
+      "filename": undefined,
+      "start": 7,
+    },
+    "type": "tag",
+  },
+  Object {
+    "data": "!",
+    "loc": Object {
+      "end": 24,
+      "filename": undefined,
+      "start": 23,
+    },
+    "type": "html",
+  },
+]
+`;
+
+exports[`should parse filters 1`] = `
+Array [
+  Object {
+    "data": "Hello, ",
+    "loc": Object {
+      "end": 7,
+      "filename": undefined,
+      "start": 0,
+    },
+    "type": "html",
+  },
+  Object {
+    "data": "first_name",
+    "filters": Array [
+      Object {
+        "data": "capitalize",
+        "loc": Object {
+          "end": 33,
+          "filename": undefined,
+          "start": 23,
+        },
+        "type": "filter",
+      },
+    ],
+    "loc": Object {
+      "end": 36,
+      "filename": undefined,
+      "start": 7,
+    },
+    "type": "tag",
+  },
+  Object {
+    "data": "!",
+    "loc": Object {
+      "end": 37,
+      "filename": undefined,
+      "start": 36,
+    },
+    "type": "html",
+  },
+]
+`;
+
+exports[`should parse multiple filters 1`] = `
+Array [
+  Object {
+    "data": "name = first_name",
+    "filters": Array [
+      Object {
+        "data": "capitalize",
+        "loc": Object {
+          "end": 40,
+          "filename": undefined,
+          "start": 30,
+        },
+        "type": "filter",
+      },
+      Object {
+        "data": "strip",
+        "loc": Object {
+          "end": 48,
+          "filename": undefined,
+          "start": 43,
+        },
+        "type": "filter",
+      },
+    ],
+    "loc": Object {
+      "end": 51,
+      "filename": undefined,
+      "start": 0,
+    },
+    "type": "assign",
+  },
+]
+`;
+
+exports[`should parse null string 1`] = `Array []`;
+
+exports[`should parse plain text 1`] = `
+Array [
+  Object {
+    "data": "hello world!",
+    "loc": Object {
+      "end": 12,
+      "filename": "test.js",
+      "start": 0,
+    },
+    "type": "html",
+  },
+]
+`;
+
+exports[`should parse whitespace control characters 1`] = `
+Array [
+  Object {
+    "data": "
+        ",
+    "loc": Object {
+      "end": 9,
+      "filename": undefined,
+      "start": 0,
+    },
+    "type": "html",
+  },
+  Object {
+    "data": "test",
+    "loc": Object {
+      "end": 23,
+      "filename": undefined,
+      "start": 9,
+    },
+    "needs_end": true,
+    "trim_left": true,
+    "type": "if",
+  },
+  Object {
+    "data": "
+            ",
+    "loc": Object {
+      "end": 36,
+      "filename": undefined,
+      "start": 23,
+    },
+    "type": "html",
+  },
+  Object {
+    "data": "test",
+    "loc": Object {
+      "end": 48,
+      "filename": undefined,
+      "start": 36,
+    },
+    "trim_left": true,
+    "trim_right": true,
+    "type": "tag",
+  },
+  Object {
+    "data": "
+        ",
+    "loc": Object {
+      "end": 57,
+      "filename": undefined,
+      "start": 48,
+    },
+    "type": "html",
+  },
+  Object {
+    "loc": Object {
+      "end": 70,
+      "filename": undefined,
+      "start": 57,
+    },
+    "trim_left": true,
+    "trim_right": true,
+    "type": "elsif",
+  },
+  Object {
+    "data": "
+            ",
+    "loc": Object {
+      "end": 83,
+      "filename": undefined,
+      "start": 70,
+    },
+    "type": "html",
+  },
+  Object {
+    "data": "\\"hello \\"",
+    "filters": Array [
+      Object {
+        "data": "append:\\"world!\\"",
+        "loc": Object {
+          "end": 113,
+          "filename": undefined,
+          "start": 98,
+        },
+        "type": "filter",
+      },
+    ],
+    "loc": Object {
+      "end": 117,
+      "filename": undefined,
+      "start": 83,
+    },
+    "trim_left": true,
+    "trim_right": true,
+    "type": "tag",
+  },
+  Object {
+    "data": "
+        ",
+    "loc": Object {
+      "end": 126,
+      "filename": undefined,
+      "start": 117,
+    },
+    "type": "html",
+  },
+  Object {
+    "loc": Object {
+      "end": 138,
+      "filename": undefined,
+      "start": 126,
+    },
+    "trim_right": true,
+    "type": "endif",
+  },
+  Object {
+    "data": "
+    ",
+    "loc": Object {
+      "end": 143,
+      "filename": undefined,
+      "start": 138,
+    },
+    "type": "html",
+  },
+]
+`;

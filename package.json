@@ -1,0 +1,24 @@
+{
+  "name": "pug-to-liquid",
+  "version": "0.0.0",
+  "description": "Convert Pug.js templates to liquid templates.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "pug",
+    "pugjs",
+    "liquid",
+    "shopify"
+  ],
+  "author": "Joshua Sullivan",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^19.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testRegex": "/test/[^/]+\\.jsx?$"
+  }
+}
