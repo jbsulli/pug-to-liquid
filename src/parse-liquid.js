@@ -2,6 +2,7 @@
 
 module.exports = parseLiquid;
 
+const parseFilter = require('./parse-liquid-filter.js');
 const parseTag = require('./parse-liquid-tag.js');
 
 const FILTER_WHITESPACE = /[\s\uFEFF\xA0]/;
@@ -80,6 +81,30 @@ ParseLiquid.prototype.parseError = function(err, start){
     err.line = lines.length;
     err.col = lines[lines.length - 1].length + 1;
     
+    var a = this.liquid.indexOf('\r', start);
+    var b = this.liquid.indexOf('\n', start);
+    
+    var rest_of_line = (~a ? (~b ? Math.min(a, b) : a) : b);
+    
+    var new_message = '\n\n' + (this.filename || '[unknown]') + ':' + err.line + ':' + err.col + '\n';
+    
+    if(err.line > 2){
+        new_message += '    ' + (err.line - 2) + '| ' + lines[err.line - 3] + '\n';
+    }
+    
+    if(err.line > 1){
+        new_message += '    ' + (err.line - 1) + '| ' + lines[err.line - 2] + '\n';
+    }
+    
+    var prefix = '  > ' + err.line + '| ';
+    new_message += prefix + lines[err.line - 1] + this.liquid.substring(start, (~rest_of_line ? rest_of_line : this.len)) + '\n';
+    
+    for(var i = prefix.length + err.col - 1; i--; ){
+        new_message += '-';
+    }
+    
+    err.message = err.message + new_message + '^\n';
+    
     throw err;
 };
 
@@ -112,7 +137,11 @@ ParseLiquid.prototype.parseTag = function(end){
                     filters = [];
                 } else {
                     filter_data = this.liquid.substring(filter_start, this.i - 1).trim();
-                    filters.push(this.token('filter', filter_start, filter_start + filter_data.length, filter_data));
+                    try {
+                        filters.push(parseFilter(this.token('filter', filter_start, filter_start + filter_data.length, filter_data)));
+                    } catch(err){
+                        this.parseError(err, filter_start);
+                    }
                 }
                 
                 // strip all whitespace in front of the next filter
@@ -128,10 +157,14 @@ ParseLiquid.prototype.parseTag = function(end){
                     
                     // wrap up the tag_data or filter
                     if(!filters){
-                        tag_data = this.liquid.substring(start + 2, i - (1 + (trim_right ? 1 : 0)));
+                        tag_data = this.liquid.substring(start + 2, i - (trim_right ? 1 : 0));
                     } else {
-                        filter_data = this.liquid.substring(filter_start, this.i - (1 + (trim_right ? 1 : 0))).trim();
-                        filters.push(this.token('filter', filter_start, filter_start + filter_data.length, filter_data));
+                        filter_data = this.liquid.substring(filter_start, this.i - (trim_right ? 1 : 0)).trim();
+                        try {
+                            filters.push(parseFilter(this.token('filter', filter_start, filter_start + filter_data.length, filter_data)));
+                        } catch(err){
+                            this.parseError(err, filter_start);
+                        }
                     }
                     
                     this.i += 2;

@@ -73,3 +73,7 @@ it('should throw when missing ending tag', () => {
     expect(() => parseLiquid('{% if test %}')).toThrow('Missing tag end');
     expect(() => parseLiquid('{% for test in testing %}{% if test %}{% endfor %}')).toThrow('Missing tag end');
 });
+
+it('should throw when filter has invalid content', () => {
+    expect(() => parseLiquid('{{ test | capitalize test }}')).toThrow('Unexpected filter content');
+});

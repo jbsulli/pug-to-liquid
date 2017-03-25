@@ -2,8 +2,8 @@
 
 module.exports = parseLiquidTag;
 
-const LOGIC_TAG = /^((?:end)?)(if|unless|else|elsif|case|when|for|cycle|tablerow|comment|include|form|javascript|layout|paginate|raw|schema|section|stylesheet|assign|capture|increment|decrement)(.*)/;
-const LOGIC_TAG_END = /^(if|unless|case|for|tablerow|comment|form|paginate|raw|schema|stylesheet)$/;
+const LOGIC_TAG = /^((?:end)?)(if|unless|else|elsif|case|when|for|break|continue|cycle|tablerow|comment|include|form|javascript|layout|paginate|raw|schema|section|stylesheet|assign|capture|increment|decrement)(.*)/;
+const LOGIC_TAG_END = /^(if|unless|case|for|tablerow|comment|form|paginate|raw|schema|stylesheet|capture)$/;
 
 function parseLiquidTag(tag, is_logic_tag){
     var data = tag.data;

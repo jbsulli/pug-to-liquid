@@ -98,6 +98,7 @@
     - url_encode
     - url_escape
     - url_param_escape
+    - t
 - url
     - asset_url
     - asset_img_url

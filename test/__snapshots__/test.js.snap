@@ -6,21 +6,23 @@ Array [
     "data": "name = last_name",
     "filters": Array [
       Object {
-        "data": "prepend:\\"Hello Mr \\\\\\"\\"",
+        "data": "\\"Hello Mr \\\\\\"\\"",
         "loc": Object {
           "end": 50,
           "filename": undefined,
           "start": 29,
         },
+        "name": "prepend",
         "type": "filter",
       },
       Object {
-        "data": "append:\\"\\\\\\"\\"",
+        "data": "\\"\\\\\\"\\"",
         "loc": Object {
           "end": 64,
           "filename": undefined,
           "start": 53,
         },
+        "name": "append",
         "type": "filter",
       },
     ],
@@ -40,21 +42,23 @@ Array [
     "data": "liquid_greeting = liquid_var",
     "filters": Array [
       Object {
-        "data": "prepend:\\"{{ \\"",
+        "data": "\\"{{ \\"",
         "loc": Object {
           "end": 54,
           "filename": undefined,
           "start": 41,
         },
+        "name": "prepend",
         "type": "filter",
       },
       Object {
-        "data": "append:\\" | capitalize }}\\"",
+        "data": "\\" | capitalize }}\\"",
         "loc": Object {
           "end": 82,
           "filename": undefined,
           "start": 57,
         },
+        "name": "append",
         "type": "filter",
       },
     ],
@@ -74,12 +78,12 @@ Array [
     "data": "name = first_name",
     "filters": Array [
       Object {
-        "data": "capitalize",
         "loc": Object {
           "end": 40,
           "filename": undefined,
           "start": 30,
         },
+        "name": "capitalize",
         "type": "filter",
       },
     ],
@@ -140,12 +144,12 @@ Array [
     "data": "first_name",
     "filters": Array [
       Object {
-        "data": "capitalize",
         "loc": Object {
           "end": 33,
           "filename": undefined,
           "start": 23,
         },
+        "name": "capitalize",
         "type": "filter",
       },
     ],
@@ -174,21 +178,21 @@ Array [
     "data": "name = first_name",
     "filters": Array [
       Object {
-        "data": "capitalize",
         "loc": Object {
           "end": 40,
           "filename": undefined,
           "start": 30,
         },
+        "name": "capitalize",
         "type": "filter",
       },
       Object {
-        "data": "strip",
         "loc": Object {
           "end": 48,
           "filename": undefined,
           "start": 43,
         },
+        "name": "strip",
         "type": "filter",
       },
     ],
@@ -296,12 +300,13 @@ Array [
     "data": "\\"hello \\"",
     "filters": Array [
       Object {
-        "data": "append:\\"world!\\"",
+        "data": "\\"world!\\"",
         "loc": Object {
           "end": 113,
           "filename": undefined,
           "start": 98,
         },
+        "name": "append",
         "type": "filter",
       },
     ],
